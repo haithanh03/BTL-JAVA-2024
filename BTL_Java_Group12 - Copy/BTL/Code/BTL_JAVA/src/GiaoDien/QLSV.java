@@ -707,42 +707,7 @@ public class QLSV extends javax.swing.JFrame {
     private void nhapmsvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nhapmsvActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nhapmsvActionPerformed
-    private void findStudentByMaSV(String maSV) {
-        try {
-            con = DatabaseAcc.getDatabaseAcc();
-            pst = con.prepareStatement("SELECT * FROM SinhVien WHERE MaSV = ?");
-            pst.setString(1, maSV);
-            ResultSet rs = pst.executeQuery();
-
-            if (rs.next()) {
-                // Sinh viên được tìm thấy
-                String hoTen = rs.getString("HoTen");
-                String email = rs.getString("Email");
-                String SDT = rs.getString("SDT");
-                String diachi = rs.getString("DiaChi");
-                String gioitinh = rs.getString("GioTinh");
-                byte[] imageData = rs.getBytes("HinhAnh");
-
-                // Hiển thị ảnh sinh viên
-                if (imageData != null && imageData.length > 0) {
-                    ImageIcon imageIcon = new ImageIcon(imageData);
-                    Image image = imageIcon.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
-                    ImageIcon scaledIcon = new ImageIcon(image);
-                    JOptionPane.showMessageDialog(this, "", "Sinh viên cần tìm :", JOptionPane.INFORMATION_MESSAGE, scaledIcon);
-                } else {
-                    JOptionPane.showMessageDialog(this, "Không có ảnh sinh viên.");
-                }// Hiển thị thông tin sinh viên
-                JOptionPane.showMessageDialog(this, "Thông tin chi tiết :\nMã SV: " + maSV + "\nGioiTinh: " + gioitinh + "\nHọ tên: " + hoTen + "\nEmail: " + email + "\nSo Dien Thoai:+84" + SDT + "\nDia Chi :" + diachi);
-            } else {
-                // Sinh viên không tồn tại trong cơ sở dữ liệu
-                JOptionPane.showMessageDialog(this, "Không tìm thấy sinh viên có mã: " + maSV);
-            }
-
-            rs.close();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-    }// @by haithanh03
+    
 
     /**
      * @param args the command line arguments
