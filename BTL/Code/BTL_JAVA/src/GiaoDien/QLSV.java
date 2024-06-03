@@ -741,7 +741,7 @@ public class QLSV extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
-    }// @by haithanh03
+    }
 
     /**
      * @param args the command line arguments
